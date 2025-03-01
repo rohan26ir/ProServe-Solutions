@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import React from 'react';
+import Link from 'next/link'; // Make sure to import Link here
 
 const page = () => {
 
@@ -40,13 +40,22 @@ const page = () => {
       link: "/services/it-support"
     }
   ];
-  
+
   return (
-    <div className='flex flex-col items-center min-h-40 p-10'>
-      <h2 className='text-3xl'>External</h2>
-      <Link href="/external/extra">
-        <button className='btn btn-info my-5'>See More</button>
-      </Link>
+    <div className='p-10'>
+      <h2>Extra</h2>
+      {
+        items.map((item) => (
+          <div key={item.id} className='p-5'>
+            <h3>{item.title}</h3>
+            <img src={item.image} alt={item.title} />
+            <p>{item.description}</p>
+            <Link href={item.id}>
+              <button className='bg-orange-500 px-3 cursor-pointer rounded-3xl'>Learn More</button>
+            </Link>
+          </div>
+        ))
+      }
     </div>
   );
 };
